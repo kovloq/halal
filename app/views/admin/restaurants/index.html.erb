@@ -1,0 +1,46 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title ">Resto</h3>      
+     </div> 
+  </div>
+</div>
+<!-- END: Subheader --> 
+<div class="m-content">
+
+  <p id="notice"><%= notice %></p>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Lat</th>
+        <th>Lng</th>
+        <th>Name</th>
+        <th>Pref</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @restaurants.each do |admin_restaurant| %>
+        <tr>
+          <td><%= admin_restaurant.lat %></td>
+          <td><%= admin_restaurant.lng %></td>
+          <td><%= admin_restaurant.name %></td>
+          <td><%= admin_restaurant.pref.en %></td>
+          <td><%= admin_restaurant.description %></td>
+          <td><%= link_to "Edit",{:controller=>"admin/restaurants",:action=>"edit",:id=>admin_restaurant.id},:class=>"btn btn-sm  btn-warning" %></td>
+          <td><%= link_to "Delete",{ :controller=>"admin/restaurants",:action=>"destroy", :id=> admin_restaurant.id }, {:method => :delete,:class=>"btn btn-sm btn-danger",:data => {:confirm => 'Are you sure?'}} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Admin Restaurant', new_admin_restaurant_path %>
+</div>

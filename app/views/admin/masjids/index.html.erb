@@ -1,0 +1,48 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title ">Masjid</h3>      
+     </div> 
+  </div>
+</div>
+<!-- END: Subheader --> 
+<div class="m-content">
+  <p id="notice"><%= notice %></p>
+
+  <table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand">
+    <thead>
+      <tr>
+        <th>Lat</th>
+        <th>Lng</th>
+        <th>Name</th>
+        <th>Pref</th>
+        <th>Description</th>
+        <th>Images</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_masjids.each do |admin_masjid| %>
+        <tr>
+          <td><%= admin_masjid.lat %></td>
+          <td><%= admin_masjid.lng %></td>
+          <td><%= admin_masjid.name %></td>
+          <td><%= admin_masjid.pref_id %></td>
+          <td><%= admin_masjid.description %></td>
+          <td>Images</td>
+          <td><%= link_to "Edit",{:controller=>"admin/masjids",:action=>"edit",:id=>admin_masjid.id},:class=>"btn btn-sm  btn-warning" %></td>
+          <td>
+            <%= link_to "Delete",{ :controller=>"admin/masjids",:action=>"destroy", :id=> admin_masjid.id }, {:method => :delete,:class=>"btn btn-sm btn-danger",:data => {:confirm => 'Are you sure?'}} %>
+           
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Admin Masjid', new_admin_masjid_path %>
+</div>

@@ -1,0 +1,147 @@
+<div class="m-portlet m-portlet--tab">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title">
+            <span class="m-portlet__head-icon m--hide">
+            <i class="la la-gear"></i>
+            </span>
+            <h3 class="m-portlet__head-text">
+              Restaurant 
+            </h3>
+          </div>
+        </div>
+      </div>
+      <!-- Begin Form -->
+      <%= form_for @restaurant,url: {action: "update"} do |form| %>
+      <div class="m-portlet__body row">
+      	<div class="col-md-4">
+      		<% @category.each do |row| %>
+      		<p><input type="checkbox" name="category[]" value="<%= row.id %>"><%= row.category %></p>
+      		<% end %> 
+      	</div>
+      	<div class="col-md-8">
+      		
+	    
+	      
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :lat, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :lat, {class: 'form-control m-input'} %>
+	      </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :lng, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :lng, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :name, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :name, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :kana_name, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :kana_name, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :address, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :address, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :kana_address, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :kana_address, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :open, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :open, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :close, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :close, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :pref_id, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	          <select name="restaurant[pref_id]" class="form-control">
+	          <% @pref.each do |item| %>
+	          <% selected=(item.id==@restaurant.pref_id)? "selected" : "" %>
+	          <option value="<%= item.id %>" <%= selected %>><%= item.en %></option>
+	          <% end %>
+	            </select>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :phone, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :phone, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :website, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_field :website, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :status, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <select name="status" class="form-control">
+	          <option value="1">Halal</option>
+	          <option value="2">Halal Friendly</option>
+	          <option value="3">Moving</option>
+	        </select>
+	        </div>
+	      </div>
+
+	      <div class="form-group m-form__group row">
+	        <%= form.label :country_id, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <select name="country_idf" class="form-control" >
+	          <% @country.each do |item| %>
+	          <option value="<%= item.id %>"><%= item.name %></option>
+	         <% end %>
+	        </select>
+	        </div>
+	      </div>
+
+	     <div class="form-group m-form__group row">
+	        <%= form.label :description, {class: 'col-2 col-form-label'} %>
+	        <div class="col-10">
+	        <%= form.text_area :description, {class: 'form-control m-input'} %>
+	        </div>
+	      </div>
+
+	      <div class="actions">
+	        <%= form.submit %>
+	      </div>
+	    
+	    
+	   </div>
+    </div>
+    <% end %>
+    <!-- End Form -->
+</div>
