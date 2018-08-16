@@ -1,0 +1,36 @@
+<div class="m-portlet m-portlet--tab">
+			<div class="m-portlet__head">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<span class="m-portlet__head-icon m--hide">
+						<i class="la la-gear"></i>
+						</span>
+						<h3 class="m-portlet__head-text">
+							Image	
+						</h3>
+					</div>
+				</div>
+			</div>
+	<%= form_for @image, :html=>{:class=>"m-form m-form--fit m-form--label-align-right"},url: {action: "create"} do |form| %>
+	<div class="m-portlet__body">
+		<div class="form-group m-form__group row">
+		    <%= form.label :url, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.file_field :url, {class: 'form-control m-input'} %>
+		    </div>
+		    <input type="hidden" name="image[image_type]" value="<%= @type %>" />
+		    <input type="hidden" name="image[parent_id]" value="<%= @parent_id %>" />
+	  	</div>
+	  	<div class="form-group m-form__group row">
+		    <%= form.label :name, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.text_field :name, {class: 'form-control m-input'} %>
+		    </div>
+		    
+	  	</div>
+		<div class="form-group m-form__group">
+		    <%= form.submit %>
+		  </div>
+	</div>
+	<% end %>
+</div>

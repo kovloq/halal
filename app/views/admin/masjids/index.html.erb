@@ -30,9 +30,11 @@
           <td><%= admin_masjid.lat %></td>
           <td><%= admin_masjid.lng %></td>
           <td><%= admin_masjid.name %></td>
-          <td><%= admin_masjid.pref_id %></td>
+          <td><%= admin_masjid.pref.en %></td>
           <td><%= admin_masjid.description %></td>
-          <td>Images</td>
+          <td><%= link_to "Images",{:controller=>"admin/images",:action=>"index",:type=>"masjid",:parent_id=>admin_masjid.id},:class=>"btn btn-sm  btn-success" %>
+            <%= admin_masjid.images.where("image_type='masjid'").count %>
+          </td>
           <td><%= link_to "Edit",{:controller=>"admin/masjids",:action=>"edit",:id=>admin_masjid.id},:class=>"btn btn-sm  btn-warning" %></td>
           <td>
             <%= link_to "Delete",{ :controller=>"admin/masjids",:action=>"destroy", :id=> admin_masjid.id }, {:method => :delete,:class=>"btn btn-sm btn-danger",:data => {:confirm => 'Are you sure?'}} %>

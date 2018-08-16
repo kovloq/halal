@@ -1,0 +1,31 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+  <div class="d-flex align-items-center">
+    <div class="mr-auto">
+      <h3 class="m-subheader__title ">Image</h3>      
+     </div> 
+  </div>
+</div>
+
+<!-- END: Subheader --> 
+<div class="m-content">
+	<table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @images.each do |row| %>
+      <tr>
+        <td><%= image_tag(row.url_url, size: "50x50") if row.url? %></td>
+        <td><%= link_to "Edit",{:controller=>"admin/images",:action=>"edit",:id=>row.id,:parent_id=>row.parent_id,:type=>row.image_type},:class=>"btn btn-sm  btn-warning" %></td>
+        <td><%= link_to "Delete",{ :controller=>"admin/images",:action=>"destroy", :id=> row.id }, {:method => :delete,:class=>"btn btn-sm btn-danger",:data => {:confirm => 'Are you sure?'}} %> </td>
+      </tr>
+      <% end %> 
+    </tbody>
+  </table>
+  <a href="/admin/images/new?type=<%= @type %>&parent_id=<%= @parent_id %>" class="btn btn-default">Add</a>
+</div>
