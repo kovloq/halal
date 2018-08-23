@@ -20,6 +20,10 @@ gem "devise"
 gem "kaminari"
 gem "carrierwave"
 gem "mysql2"
+gem 'capistrano-rvm'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -22,7 +22,7 @@ class Admin::ImagesController < ApplicationController
 	    if @image.save
 	        redirect_to :controller => "admin/images", :action => "index", :parent_id=>params[:image][:parent_id], :type => params[:image][:image_type]
 	    else
-	      render :action => 'add'
+	      render :action => 'new'
 	    end
 	end
 

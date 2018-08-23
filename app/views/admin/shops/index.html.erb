@@ -2,7 +2,7 @@
 
 <h1>Admin Shops</h1>
 
-<table>
+<table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand">
   <thead>
     <tr>
       <th>Lat</th>
@@ -10,7 +10,9 @@
       <th>Name</th>
       <th>Pref</th>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th>Images</th>
+      <th ></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -22,9 +24,10 @@
         <td><%= admin_shop.name %></td>
         <td><%= admin_shop.pref_id %></td>
         <td><%= admin_shop.description %></td>
-        <td><%= link_to 'Show', admin_shop %></td>
+        <td><%= link_to "Images",{:controller=>"admin/images",:action=>"index",:type=>"shop",:parent_id=>admin_shop.id},:class=>"btn btn-sm  btn-success" %>
+            <%= admin_shop.images.where("image_type='shop'").count %>
         <td><%= link_to 'Edit', edit_admin_shop_path(admin_shop) %></td>
-        <td><%= link_to 'Destroy', admin_shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Delete",{ :controller=>"admin/shops",:action=>"destroy", :id=> admin_shop.id }, {:method => :delete,:class=>"btn btn-sm btn-danger",:data => {:confirm => 'Are you sure?'}} %></td>
       </tr>
     <% end %>
   </tbody>

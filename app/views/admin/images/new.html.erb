@@ -11,6 +11,13 @@
 					</div>
 				</div>
 			</div>
+<% if @image.errors.any? %>
+<ul>
+  <% @image.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
 	<%= form_for @image, :html=>{:class=>"m-form m-form--fit m-form--label-align-right"},url: {action: "create"} do |form| %>
 	<div class="m-portlet__body">
 		<div class="form-group m-form__group row">

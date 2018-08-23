@@ -4,7 +4,7 @@ class Admin::ShopsController < ApplicationController
   # GET /admin/shops
   # GET /admin/shops.json
   def index
-    @admin_shops = Admin::Shop.all
+    @admin_shops = Shop.all
   end
 
   # GET /admin/shops/1
@@ -14,41 +14,44 @@ class Admin::ShopsController < ApplicationController
 
   # GET /admin/shops/new
   def new
-    @admin_shop = Admin::Shop.new
+    @shop = Shop.new
+    @pref=Pref.all
   end
 
   # GET /admin/shops/1/edit
   def edit
+    @shop=Shop.find(params[:id])
+    @pref=Pref.all
   end
 
   # POST /admin/shops
   # POST /admin/shops.json
   def create
-    @admin_shop = Admin::Shop.new(admin_shop_params)
-
-    respond_to do |format|
-      if @admin_shop.save
-        format.html { redirect_to @admin_shop, notice: 'Shop was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_shop }
+    @shop = Shop.new(admin_shop_params)
+    @pref=Pref.all
+    
+      if @shop.save
+        redirect_to :controller => "admin/shops", :action => "index"
       else
-        format.html { render :new }
-        format.json { render json: @admin_shop.errors, status: :unprocessable_entity }
+        
+
+        
       end
-    end
+    
   end
 
   # PATCH/PUT /admin/shops/1
   # PATCH/PUT /admin/shops/1.json
   def update
-    respond_to do |format|
+    @shop = Shop.find(params[:id])
+    @pref=Pref.all
       if @admin_shop.update(admin_shop_params)
-        format.html { redirect_to @admin_shop, notice: 'Shop was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_shop }
+        redirect_to :controller => "admin/shops", :action => "index"
       else
         format.html { render :edit }
         format.json { render json: @admin_shop.errors, status: :unprocessable_entity }
       end
-    end
+    
   end
 
   # DELETE /admin/shops/1
@@ -64,11 +67,11 @@ class Admin::ShopsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_shop
-      @admin_shop = Admin::Shop.find(params[:id])
+      @admin_shop = Shop.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_shop_params
-      params.require(:admin_shop).permit(:lat, :lng, :name, :pref_id, :description)
+      params.require(:shop).permit(:lat, :lng, :name, :pref_id, :description, :city, :post_code, :address)
     end
 end

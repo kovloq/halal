@@ -12,7 +12,7 @@
   <p id="notice"><%= notice %></p>
 
 
-  <table class="table">
+  <table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand">
     <thead>
       <tr>
         <th>Lat</th>
@@ -20,6 +20,7 @@
         <th>Name</th>
         <th>Pref</th>
         <th>Description</th>
+        <th>Masjid</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -33,6 +34,8 @@
           <td><%= admin_restaurant.name %></td>
           <td><%= admin_restaurant.pref.en %></td>
           <td><%= admin_restaurant.description %></td>
+          <td><%= link_to "Images",{:controller=>"admin/images",:action=>"index",:type=>"restaurant",:parent_id=>admin_restaurant.id},:class=>"btn btn-sm  btn-success" %>
+            <%= admin_restaurant.images.where("image_type='restaurant'").count %>
           <td><%= link_to "Edit",{:controller=>"admin/restaurants",:action=>"edit",:id=>admin_restaurant.id},:class=>"btn btn-sm  btn-warning" %></td>
           <td><%= link_to "Delete",{ :controller=>"admin/restaurants",:action=>"destroy", :id=> admin_restaurant.id }, {:method => :delete,:class=>"btn btn-sm btn-danger",:data => {:confirm => 'Are you sure?'}} %></td>
         </tr>

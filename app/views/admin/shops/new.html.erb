@@ -1,5 +1,90 @@
-<h1>New Admin Shop</h1>
+<div class="m-portlet m-portlet--tab">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<span class="m-portlet__head-icon m--hide">
+					<i class="la la-gear"></i>
+					</span>
+					<h3 class="m-portlet__head-text">
+						Shop	
+					</h3>
+				</div>
+			</div>
+		</div>
+<% if @shop.errors.any? %>
+<ul>
+  <% @shop.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
 
-<%= render 'form', admin_shop: @admin_shop %>
+    <%= form_for @shop, :html=>{:class=>"m-form m-form--fit m-form--label-align-right"},url: {action: "create"} do |form| %>
+	  <div class="m-portlet__body">
+	  	  <div class="form-group m-form__group row">
+		    <%= form.label :lat, {class: 'col-2 col-form-label'} %>
+		    <div class="col-10">
+		    <%= form.text_field :lat, {class: 'form-control m-input'} %>
+			</div>
+		  </div>
 
-<%= link_to 'Back', admin_shops_path %>
+		  <div class="form-group m-form__group row">
+		    <%= form.label :lng, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.text_field :lng, {class: 'form-control m-input'} %>
+		    </div>
+		  </div>
+
+		  <div class="form-group m-form__group row">
+		    <%= form.label :name, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.text_field :name, {class: 'form-control m-input'} %>
+		    </div>
+		  </div>
+
+		  <div class="form-group m-form__group row">
+		    <%= form.label :pref_id, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    	
+		    	<select name="shop[pref_id]" class="form-control">
+		    	<% @pref.each do |item| %>
+		    	<option value="<%= item.id %>"><%= item.en %></option>
+		    	<% end %>
+		        </select>
+		    </div>
+		  </div>
+
+		   <div class="form-group m-form__group row">
+		    <%= form.label :city, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.text_field :city, {class: 'form-control m-input'} %>
+		    </div>
+		  </div>
+
+		  <div class="form-group m-form__group row">
+		    <%= form.label :post_code, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.text_field :post_code, {class: 'form-control m-input'} %>
+		    </div>
+		  </div>
+
+		  <div class="form-group m-form__group row">
+		    <%= form.label :address, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.text_field :address, {class: 'form-control m-input'} %>
+			</div>
+		  </div>
+
+		  <div class="form-group m-form__group row">
+		    <%= form.label :description, {class: 'col-2 col-form-label'}  %>
+		    <div class="col-10">
+		    <%= form.text_area :description, {class: 'form-control m-input'} %>
+		    </div>
+		  </div>
+
+		  <div class="form-group m-form__group">
+		    <%= form.submit %>
+		  </div>
+	   </div>
+	<% end %>
+</div>
