@@ -1,6 +1,9 @@
+require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rvm'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
 set :rvm_type, :user
 set :rvm_ruby_version, '2.5.1'
 # server-based syntax
@@ -8,7 +11,7 @@ set :rvm_ruby_version, '2.5.1'
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-# server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
+server "118.27.4.170", user: "root", roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 

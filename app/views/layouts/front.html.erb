@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<%= stylesheet_link_tag    'front', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'front', 'data-turbolinks-track': 'reload' %>
+</head>
+<body class="stretched">
+
+<div id="wrapper" class="clearfix">
+<%= yield %>
+</div>
+</body>
+</html>
