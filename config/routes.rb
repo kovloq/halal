@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  #devise_for :admins
+  #devise_for :admins
+  #devise_for :users
+  
+  #devise_for :installs
+  #devise_for :admins
   namespace :admin do
     resources :shops
     resources :restaurants
